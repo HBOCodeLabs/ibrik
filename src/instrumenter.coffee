@@ -90,7 +90,7 @@ class Instrumenter extends istanbul.Instrumenter
         estraverse.traverse program,
             leave: (node, parent) ->
                 mappedLocation = (location) ->
-                  locArray = sourceMap.getSourcePosition([
+                  locArray = sourceMap.sourceLocation([
                     location.line - 1,
                     location.column])
                   line = 0
