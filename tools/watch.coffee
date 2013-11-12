@@ -24,11 +24,11 @@ fs = require 'fs'
 path = require 'path'
 child_process = require 'child_process'
 root = path.join __dirname, '..'
-coffee = require 'coffee-script-redux'
+coffee = require 'coffee-script'
 compiler = path.join(root, 'node_modules', '.bin', 'coffee')
 
-libdir = path.join root, process.argv[3]
-srcdir = path.join root, process.argv[4]
+libdir = path.join root, process.argv[2]
+srcdir = path.join root, process.argv[3]
 watchers = []
 
 if not fs.watch
