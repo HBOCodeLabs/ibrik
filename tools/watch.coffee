@@ -24,11 +24,11 @@ fs = require 'fs'
 path = require 'path'
 child_process = require 'child_process'
 root = path.join __dirname, '..'
-coffee = require 'coffee-script-redux'
+coffee = require 'coffee-script'
 compiler = path.join(root, 'node_modules', '.bin', 'coffee')
 
-libdir = path.join root, process.argv[3]
-srcdir = path.join root, process.argv[4]
+libdir = path.join root, process.argv[2]
+srcdir = path.join root, process.argv[3]
 watchers = []
 
 if not fs.watch
@@ -39,7 +39,7 @@ timeLog = (message) ->
     console.log "#{(new Date).toLocaleTimeString()} - #{message}"
 
 compile = (src, dst) ->
-    child_process.exec "#{compiler} -j < #{JSON.stringify src} > #{JSON.stringify dst}", (err) ->
+    child_process.exec "#{compiler} -o #{JSON.stringify dst} #{JSON.stringify src}", (err) ->
         timeLog "compiled #{path.relative root, src}"
 
 fs.mkdir libdir, ->
@@ -47,20 +47,18 @@ fs.mkdir libdir, ->
         for file in files
             do ->
                 src = path.join srcdir, file
-                dst = path.join libdir, "#{path.basename file, '.coffee'}.js"
-                compile src, dst
+                compile src, libdir
 
         refresh = ->
             watcher.close() for watcher in watchers
             fs.readdir srcdir, (err, files) ->
                 for file in files
-                    console.log file
                     do ->
                         src = path.join srcdir, file
-                        dst = path.join libdir, "#{path.basename file, '.coffee'}.js"
                         watcher = fs.watch src, (event, filename) ->
+                            # This may trigger twice for a single change. It is a known bug with fs.watch
                             if event is 'change'
-                                compile src, dst
+                                compile src, libdir
                         watchers.push watcher
 
         # notify directory file list change
