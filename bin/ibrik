@@ -1,2 +1,15 @@
-#!/usr/bin/env node
-require(require('path').join(__dirname, '..', 'lib', 'command'));
+#!/bin/sh
+basedir=`dirname "$0"`
+
+case `uname` in
+    *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
+esac
+
+if [ -x "$basedir/node" ]; then
+  echo "$basedir/node"  "$basedir/../coffee-script/bin/coffee" "$basedir/../src/command" "$@"
+  ret=$?
+else 
+  echo node  "$basedir/../coffee-script/bin/coffee" "$basedir/../src/command" "$@"
+  ret=$?
+fi
+exit $ret
