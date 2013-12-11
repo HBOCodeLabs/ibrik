@@ -26,7 +26,7 @@ optimist = require 'optimist'
 
 COMMANDS = [
     'cover'
-    'report'
+    'instrument'
 ]
 
 

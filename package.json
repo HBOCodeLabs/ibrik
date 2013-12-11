@@ -1,48 +1,53 @@
 {
-    "name": "ibrik",
-    "description": "CoffeeScript coverage tool",
-    "homepage": "http://github.com/oanda/ibrik.html",
-    "main": "./lib/ibrik",
-    "directories": {
-        "lib": "./lib",
-        "tools": "./tools"
-    },
-    "bin": {
-        "ibrik": "./bin/ibrik"
-    },
-    "version": "0.1.0",
-    "engines": {
-        "node": ">=0.4.0"
-    },
-    "maintainers": [{
-        "name": "Mark Oosterveld",
-        "email": "marko@oanda.com",
-        "web": "http://github.com/oanda"
-    }],
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/oanda/ibrik.git"
-    },
-    "dependencies": {
-        "coffee-script": "~ 1.6.3",
-        "istanbul": "*",
-        "optimist": "*",
-        "escodegen": "*",
-        "mkdirp": "*",
-        "which": "*",
-        "estraverse": "*",
-        "esprima": "1.0.x",
-        "fileset": "0.1.x"
-    },
-    "devDependencies": {
-        "mocha": "*",
-        "chai": "*"
-    },
-    "licenses": [{
-        "type": "BSD",
-        "url": "http://github.com/Constellation/ibrik/raw/master/LICENSE.BSD"
-    }],
-    "scripts": {
-        "test": "./node_modules/.bin/mocha"
+  "name": "ibrik",
+  "description": "CoffeeScript coverage tool",
+  "homepage": "http://github.com/oanda/ibrik.html",
+  "main": "./lib/ibrik",
+  "directories": {
+    "lib": "./lib",
+    "tools": "./tools"
+  },
+  "bin": {
+    "ibrik": "./bin/ibrik"
+  },
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "maintainers": [
+    {
+      "name": "Mark Oosterveld",
+      "email": "marko@oanda.com",
+      "web": "http://github.com/oanda"
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/oanda/ibrik.git"
+  },
+  "dependencies": {
+    "coffee-script": "~ 1.6.3",
+    "istanbul": "*",
+    "optimist": "*",
+    "escodegen": "*",
+    "mkdirp": "*",
+    "which": "*",
+    "estraverse": "*",
+    "esprima": "1.0.x",
+    "fileset": "0.1.x",
+    "async": "~0.2.9"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "http://github.com/Constellation/ibrik/raw/master/LICENSE.BSD"
+    }
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  }
 }
